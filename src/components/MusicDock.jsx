@@ -33,6 +33,10 @@ function loadYouTubeAPI() {
 
 export default function MusicDock() {
   const [open, setOpen] = useState(() => localStorage.getItem('pomodoro.music.open') === '1')
+  // once music has started, the player stays alive even with the panel
+  // closed — closing used to destroy the iframe and kill the music,
+  // which forced the panel to stay open on top of the timer
+  const [started, setStarted] = useState(false)
   const [station, setStation] = useState(() => {
     const s = localStorage.getItem('pomodoro.music.station')
     return STATIONS[s] ? s : 'chill'
@@ -52,10 +56,12 @@ export default function MusicDock() {
   useEffect(() => { localStorage.setItem('pomodoro.music.open', open ? '1' : '0') }, [open])
   useEffect(() => { localStorage.setItem('pomodoro.music.station', station) }, [station])
   useEffect(() => { localStorage.setItem('pomodoro.music.volume', String(volume)) }, [volume])
+  useEffect(() => { if (open) setStarted(true) }, [open])
 
-  // build (or rebuild) the player when the dock opens / station changes
+  // build (or rebuild) the player once started / on station change;
+  // closing the panel no longer tears it down
   useEffect(() => {
-    if (!open) return
+    if (!started) return
     let cancelled = false
 
     loadYouTubeAPI().then((YT) => {
@@ -89,7 +95,7 @@ export default function MusicDock() {
         playerRef.current = null
       }
     }
-  }, [open, station])
+  }, [started, station])
 
   const changeVolume = (v) => {
     setVolume(v)
@@ -99,8 +105,8 @@ export default function MusicDock() {
 
   return (
     <div className="music-dock">
-      {open && (
-        <div className="music-panel">
+      {(started || open) && (
+        <div className={`music-panel ${open ? '' : 'is-hidden'}`}>
           <div className="music-tabs">
             {Object.entries(STATIONS).map(([key, s]) => (
               <button
