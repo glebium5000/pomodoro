@@ -10,8 +10,8 @@ import { useEffect, useRef, useState } from 'react'
 const STATIONS = {
   chill: { label: 'lofi radio', id: 'X4VbdwhkE10', live: true },
   summer: { label: 'summer mix', id: 'XVFUtEh9zrY' },
-  mix3: { label: 'mix 3', id: 'MYPVQccHhAQ' },
-  mix4: { label: 'mix 4', id: 'ZXni9_91ORs' },
+  mix3: { label: 'jazz mix', id: 'MYPVQccHhAQ' },
+  mix4: { label: 'persona 5', id: 'ZXni9_91ORs' },
 }
 
 const DEFAULT_VOLUME = 30
