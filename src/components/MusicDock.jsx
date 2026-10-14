@@ -9,9 +9,9 @@ import { useEffect, useRef, useState } from 'react'
 
 const STATIONS = {
   chill: { label: 'Club Penguin', id: 'SuJlexISEzk' },
-  summer: { label: 'summer mix', id: 'XVFUtEh9zrY' },
-  mix3: { label: 'jazz mix', id: 'MYPVQccHhAQ' },
-  mix4: { label: 'persona 5', id: 'ZXni9_91ORs' },
+  summer: { label: 'Summer mix', id: 'XVFUtEh9zrY' },
+  mix3: { label: 'Jazz mix', id: 'MYPVQccHhAQ' },
+  mix4: { label: 'Persona 5', id: 'ZXni9_91ORs' },
 }
 
 const DEFAULT_VOLUME = 30
