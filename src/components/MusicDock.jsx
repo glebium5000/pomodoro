@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const STATIONS = {
-  chill: { label: 'lofi radio', id: 'SuJlexISEzk' },
+  chill: { label: 'Club Penguin', id: 'SuJlexISEzk' },
   summer: { label: 'summer mix', id: 'XVFUtEh9zrY' },
   mix3: { label: 'jazz mix', id: 'MYPVQccHhAQ' },
   mix4: { label: 'persona 5', id: 'ZXni9_91ORs' },
